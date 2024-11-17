@@ -2,14 +2,18 @@
 
 if [ $# -ne 2 ]
 then
-	echo "provide github username[1] and email[2]"
+    echo "provide username[1] (only needed to name the file), email[2] (important) and host[3] (important. host example: github, bitbucket, etc)"
 	exit 1
 fi
 
-identity_file=~/.ssh/github_ssh_key_for_$1
+username=$1
+email=$2
+host=$3
+
+identity_file=~/.ssh/$(host)_ssh_key_for_$(username)
 
 mkdir -p ~/.ssh
-ssh-keygen -t ed25519 -C "$2" -f "$identity_file"
+ssh-keygen -t ed25519 -C "$email" -f "$identity_file"
 
 echo "\
 Host github.com
