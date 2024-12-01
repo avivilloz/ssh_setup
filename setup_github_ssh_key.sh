@@ -10,7 +10,7 @@ keylabel=$1
 email=$2
 host=$3
 
-identity_file="~/.ssh/$keylabel"
+identity_file=~/.ssh/$keylabel
 
 mkdir -p ~/.ssh
 ssh-keygen -t ed25519 -C "$email" -f "$identity_file"
